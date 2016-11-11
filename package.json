@@ -1,0 +1,31 @@
+{
+  "name": "realign",
+  "version": "0.0.0",
+  "description": "Re-align whitespaces and tabs in a multi-line string.",
+  "main": "realign.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volkovasystems/realign.git"
+  },
+  "keywords": [
+    "re-align",
+    "whitespace",
+    "tab",
+    "mult-line",
+    "string",
+    "realign"
+  ],
+  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/volkovasystems/realign/issues"
+  },
+  "homepage": "https://github.com/volkovasystems/realign#readme",
+  "dependencies": {
+    "harden": "^0.6.0",
+    "protype": "^0.2.0"
+  }
+}
