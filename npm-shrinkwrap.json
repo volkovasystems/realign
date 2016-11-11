@@ -1,6 +1,6 @@
 {
   "name": "realign",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "dependencies": {
     "harden": {
       "version": "0.6.0",
@@ -28,6 +28,37 @@
           "version": "0.6.0",
           "from": "harden@latest",
           "resolved": "https://registry.npmjs.org/harden/-/harden-0.6.0.tgz"
+        }
+      }
+    },
+    "truly": {
+      "version": "0.2.0",
+      "from": "truly@latest",
+      "resolved": "https://registry.npmjs.org/truly/-/truly-0.2.0.tgz",
+      "dependencies": {
+        "protype": {
+          "version": "0.2.0",
+          "from": "protype@latest",
+          "resolved": "https://registry.npmjs.org/protype/-/protype-0.2.0.tgz",
+          "dependencies": {
+            "cemento": {
+              "version": "0.1.0",
+              "from": "cemento@latest",
+              "resolved": "https://registry.npmjs.org/cemento/-/cemento-0.1.0.tgz",
+              "dependencies": {
+                "harden": {
+                  "version": "0.6.0",
+                  "from": "harden@latest",
+                  "resolved": "https://registry.npmjs.org/harden/-/harden-0.6.0.tgz"
+                }
+              }
+            },
+            "harden": {
+              "version": "0.6.0",
+              "from": "harden@latest",
+              "resolved": "https://registry.npmjs.org/harden/-/harden-0.6.0.tgz"
+            }
+          }
         }
       }
     }

@@ -43,12 +43,15 @@
 
 	@module-documentation:
 		Re-align whitespaces and tabs in a multi-line string.
+
+		This will remove lines without significant characters.
 	@end-module-documentation
 
 	@include:
 		{
 			"harden": "harden",
-			"protype": "protype"
+			"protype": "protype",
+			"truly": "truly"
 		}
 	@end-include
 */
@@ -56,6 +59,7 @@
 if( typeof require == "function" ){
 	var harden = require( "harden" );
 	var protype = require( "protype" );
+	var truly = require( "truly" );
 }
 
 if( typeof window != "undefined" && !( "harden" in window ) ){
@@ -64,6 +68,10 @@ if( typeof window != "undefined" && !( "harden" in window ) ){
 
 if( typeof window != "undefined" && !( "protype" in window ) ){
 	throw new Error( "protype is not defined" );
+}
+
+if( typeof window != "undefined" && !( "truly" in window ) ){
+	throw new Error( "truly is not defined" );
 }
 
 var realign = function realign( string ){
@@ -79,7 +87,13 @@ var realign = function realign( string ){
 		throw new Error( "invalid string" );
 	}
 
-	string = string.replace( realign.TRAILING_SPACE_PATTERN, "" ).split( realign.NEWLINE_PATTERN );
+	string = string
+		.split( realign.NEWLINE_PATTERN )
+		.map( ( line ) => { return line.replace( realign.SPACE_LINE_PATTERN, "" ) } )
+		.filter( truly )
+		.join( "\n" )
+		.replace( realign.TRAILING_SPACE_PATTERN, "" )
+		.split( realign.NEWLINE_PATTERN );
 
 	let space = ( string[ 0 ].match( realign.SPACE_PATTERN ) || [ ] )[ 0 ] || "";
 	let spacePattern = new RegExp( `^${ space }` );
@@ -89,6 +103,7 @@ var realign = function realign( string ){
 
 harden.bind( realign )( "NEWLINE_PATTERN", /\n/ );
 harden.bind( realign )( "SPACE_PATTERN", /\s{2,}/g );
+harden.bind( realign )( "SPACE_LINE_PATTERN", /^\s+$/ );
 harden.bind( realign )( "TRAILING_SPACE_PATTERN", /^[\n\r]+|[\n\r\s]+$/gm );
 
 if( typeof module != "undefined" && typeof module.exports != "undefined" ){
