@@ -49,6 +49,7 @@
 
 	@include:
 		{
+			"falzy": "falzy",
 			"harden": "harden",
 			"protype": "protype",
 			"truly": "truly"
@@ -56,25 +57,12 @@
 	@end-include
 */
 
-if( typeof require == "function" ){
-	var harden = require( "harden" );
-	var protype = require( "protype" );
-	var truly = require( "truly" );
-}
+const falzy = require( "falzy" );
+const harden = require( "harden" );
+const protype = require( "protype" );
+const truly = require( "truly" );
 
-if( typeof window != "undefined" && !( "harden" in window ) ){
-	throw new Error( "harden is not defined" );
-}
-
-if( typeof window != "undefined" && !( "protype" in window ) ){
-	throw new Error( "protype is not defined" );
-}
-
-if( typeof window != "undefined" && !( "truly" in window ) ){
-	throw new Error( "truly is not defined" );
-}
-
-var realign = function realign( string ){
+const realign = function realign( string ){
 	/*;
 		@meta-configuration:
 			{
@@ -85,6 +73,10 @@ var realign = function realign( string ){
 
 	if( !protype( string, STRING ) ){
 		throw new Error( "invalid string" );
+	}
+
+	if( falzy( string ) ){
+		return string;
 	}
 
 	string = string
@@ -101,11 +93,10 @@ var realign = function realign( string ){
 	return string.map( ( line ) => { return line.replace( spacePattern, "" ) } ).join( "\n" );
 };
 
-harden.bind( realign )( "NEWLINE_PATTERN", /\n/ );
-harden.bind( realign )( "SPACE_PATTERN", /\s{2,}/g );
-harden.bind( realign )( "SPACE_LINE_PATTERN", /^\s+$/ );
-harden.bind( realign )( "TRAILING_SPACE_PATTERN", /^[\n\r]+|[\n\r\s]+$/gm );
+harden
+	.bind( realign )( "NEWLINE_PATTERN", /\n/ )
+	.harden( "SPACE_PATTERN", /\s{2,}/g )
+	.harden( "SPACE_LINE_PATTERN", /^\s+$/ )
+	.harden( "TRAILING_SPACE_PATTERN", /^[\n\r]+|[\n\r\s]+$/gm );
 
-if( typeof module != "undefined" && typeof module.exports != "undefined" ){
-	module.exports = realign;
-}
+module.exports = realign;
