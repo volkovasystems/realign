@@ -1,10 +1,13 @@
 {
   "name": "realign",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Re-align whitespaces and tabs in a multi-line string.",
   "main": "realign.js",
+  "support": "realign.support.js",
+  "deploy": "realign.deploy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel realign.js -o realign.support.js && webpack",
+    "test": "mocha realign-test.js"
   },
   "repository": {
     "type": "git",
@@ -19,15 +22,26 @@
     "realign"
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "contributors": [
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/volkovasystems/realign/issues"
   },
   "homepage": "https://github.com/volkovasystems/realign#readme",
   "dependencies": {
-    "falzy": "^0.5.0",
-    "harden": "^0.7.0",
-    "protype": "^0.4.0",
-    "truly": "^0.3.0"
+    "babel-runtime": "^6.20.0",
+    "falzy": "^0.7.0",
+    "harden": "^0.12.0",
+    "protype": "^0.7.0",
+    "truly": "^0.5.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-latest": "^6.16.0",
+    "webpack": "^1.14.0"
   }
 }

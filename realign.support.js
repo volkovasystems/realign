@@ -60,46 +60,40 @@
 	@end-include
 */
 
-const falzy = require( "falzy" );
-const harden = require( "harden" );
-const protype = require( "protype" );
-const truly = require( "truly" );
+var falzy = require("falzy");
+var harden = require("harden");
+var protype = require("protype");
+var truly = require("truly");
 
-const realign = function realign( string ){
+var realign = function realign(string) {
 	/*;
-		@meta-configuration:
-			{
-				"string:required": "string"
-			}
-		@end-meta-configuration
-	*/
+ 	@meta-configuration:
+ 		{
+ 			"string:required": "string"
+ 		}
+ 	@end-meta-configuration
+ */
 
-	if( !protype( string, STRING ) ){
-		throw new Error( "invalid string" );
+	if (!protype(string, STRING)) {
+		throw new Error("invalid string");
 	}
 
-	if( falzy( string ) ){
+	if (falzy(string)) {
 		return string;
 	}
 
-	string = string
-		.split( realign.NEWLINE_PATTERN )
-		.map( ( line ) => { return line.replace( realign.SPACE_LINE_PATTERN, "" ) } )
-		.filter( truly )
-		.join( "\n" )
-		.replace( realign.TRAILING_SPACE_PATTERN, "" )
-		.split( realign.NEWLINE_PATTERN );
+	string = string.split(realign.NEWLINE_PATTERN).map(function (line) {
+		return line.replace(realign.SPACE_LINE_PATTERN, "");
+	}).filter(truly).join("\n").replace(realign.TRAILING_SPACE_PATTERN, "").split(realign.NEWLINE_PATTERN);
 
-	let space = ( string[ 0 ].match( realign.SPACE_PATTERN ) || [ ] )[ 0 ] || "";
-	let spacePattern = new RegExp( `^${ space }` );
+	var space = (string[0].match(realign.SPACE_PATTERN) || [])[0] || "";
+	var spacePattern = new RegExp("^" + space);
 
-	return string.map( ( line ) => { return line.replace( spacePattern, "" ) } ).join( "\n" );
+	return string.map(function (line) {
+		return line.replace(spacePattern, "");
+	}).join("\n");
 };
 
-harden
-	.bind( realign )( "NEWLINE_PATTERN", /\n/ )
-	.harden( "SPACE_PATTERN", /\s{2,}/g )
-	.harden( "SPACE_LINE_PATTERN", /^\s+$/ )
-	.harden( "TRAILING_SPACE_PATTERN", /^[\n\r]+|[\n\r\s]+$/gm );
+harden.bind(realign)("NEWLINE_PATTERN", /\n/).harden("SPACE_PATTERN", /\s{2,}/g).harden("SPACE_LINE_PATTERN", /^\s+$/).harden("TRAILING_SPACE_PATTERN", /^[\n\r]+|[\n\r\s]+$/gm);
 
 module.exports = realign;
