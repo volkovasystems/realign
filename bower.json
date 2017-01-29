@@ -1,6 +1,6 @@
 {
   "name": "realign",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Re-align whitespaces and tabs in a multi-line string.",
   "main": "realign.js",
   "support": "realign.support.js",
@@ -27,9 +27,9 @@
     "tests"
   ],
   "dependencies": {
-    "falzy": "^0.7.0",
-    "harden": "^0.12.0",
-    "protype": "^0.7.0",
-    "truly": "^0.5.0"
+    "falzy": "^0.10.0",
+    "harden": "^0.14.0",
+    "protype": "^0.11.0",
+    "truly": "^0.9.0"
   }
 }
