@@ -1,18 +1,30 @@
 "use strict";
 
 const webpack = require( "webpack" );
-const ResolverPlugin = webpack.ResolverPlugin;
-const DirectoryDescriptionFilePlugin = ResolverPlugin.DirectoryDescriptionFilePlugin;
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
 	"entry": "./realign.support.js",
 	"resolve": {
-		"modulesDirectories": [ "bower_components", "node_modules" ]
+		"descriptionFiles": [
+			"bower.json",
+			"package.json"
+		],
+		"modules": [
+			"bower_components",
+			"node_modules"
+		],
+		"mainFields": [
+			"support",
+			"browser",
+			"module",
+			"main"
+		]
 	},
 	"module": {
-		"preLoaders": [
+		"rules": [
 			{
+				"enforce": "pre",
 				"test": /\.support\.js$/,
 				"loader": "source-map-loader"
 			}
@@ -24,8 +36,6 @@ module.exports = {
 		"filename": "realign.deploy.js"
 	},
 	"plugins": [
-		new ResolverPlugin( new DirectoryDescriptionFilePlugin( "bower.json", [ "support" ] ) ),
-		new ResolverPlugin( new DirectoryDescriptionFilePlugin( ".bower.json", [ "main" ] ) ),
 		new UglifyJsPlugin( {
 			"compress": {
 				"keep_fargs": true,
@@ -37,5 +47,5 @@ module.exports = {
 			"mangle": false
 		} )
 	],
-	"devtool": "#inline-source-map"
+	"devtool": "#cheap-module-inline-source-map"
 };
