@@ -1,64 +1,64 @@
 "use strict";
 
 /*;
-	@module-license:
-		The MIT License (MIT)
-		@mit-license
-
-		Copyright (@c) 2017 Richeve Siodina Bebedor
-		@email: richeve.bebedor@gmail.com
-
-		Permission is hereby granted, free of charge, to any person obtaining a copy
-		of this software and associated documentation files (the "Software"), to deal
-		in the Software without restriction, including without limitation the rights
-		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-		copies of the Software, and to permit persons to whom the Software is
-		furnished to do so, subject to the following conditions:
-
-		The above copyright notice and this permission notice shall be included in all
-		copies or substantial portions of the Software.
-
-		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-		SOFTWARE.
-	@end-module-license
-
-	@module-configuration:
-		{
-			"package": "realign",
-			"path": "realign/realign.js",
-			"file": "realign.js",
-			"module": "realign",
-			"author": "Richeve S. Bebedor",
-			"contributors": [
-				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
-			],
-			"eMail": "richeve.bebedor@gmail.com",
-			"repository": "https://github.com/volkovasystems/realign.git",
-			"test": "realign-test.js",
-			"global": true
-		}
-	@end-module-configuration
-
-	@module-documentation:
-		Re-align whitespaces and tabs in a multi-line string.
-
-		This will remove lines without significant characters.
-	@end-module-documentation
-
-	@include:
-		{
-			"falzy": "falzy",
-			"harden": "harden",
-			"protype": "protype",
-			"truly": "truly"
-		}
-	@end-include
-*/
+              	@module-license:
+              		The MIT License (MIT)
+              		@mit-license
+              
+              		Copyright (@c) 2017 Richeve Siodina Bebedor
+              		@email: richeve.bebedor@gmail.com
+              
+              		Permission is hereby granted, free of charge, to any person obtaining a copy
+              		of this software and associated documentation files (the "Software"), to deal
+              		in the Software without restriction, including without limitation the rights
+              		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+              		copies of the Software, and to permit persons to whom the Software is
+              		furnished to do so, subject to the following conditions:
+              
+              		The above copyright notice and this permission notice shall be included in all
+              		copies or substantial portions of the Software.
+              
+              		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+              		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+              		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+              		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+              		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+              		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+              		SOFTWARE.
+              	@end-module-license
+              
+              	@module-configuration:
+              		{
+              			"package": "realign",
+              			"path": "realign/realign.js",
+              			"file": "realign.js",
+              			"module": "realign",
+              			"author": "Richeve S. Bebedor",
+              			"contributors": [
+              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+              			],
+              			"eMail": "richeve.bebedor@gmail.com",
+              			"repository": "https://github.com/volkovasystems/realign.git",
+              			"test": "realign-test.js",
+              			"global": true
+              		}
+              	@end-module-configuration
+              
+              	@module-documentation:
+              		Re-align whitespaces and tabs in a multi-line string.
+              
+              		This will remove lines without significant characters.
+              	@end-module-documentation
+              
+              	@include:
+              		{
+              			"falzy": "falzy",
+              			"harden": "harden",
+              			"protype": "protype",
+              			"truly": "truly"
+              		}
+              	@end-include
+              */
 
 var falzy = require("falzy");
 var harden = require("harden");
@@ -67,12 +67,12 @@ var truly = require("truly");
 
 var realign = function realign(string) {
 	/*;
- 	@meta-configuration:
- 		{
- 			"string:required": "string"
- 		}
- 	@end-meta-configuration
- */
+                                        	@meta-configuration:
+                                        		{
+                                        			"string:required": "string"
+                                        		}
+                                        	@end-meta-configuration
+                                        */
 
 	if (!protype(string, STRING)) {
 		throw new Error("invalid string");
@@ -82,19 +82,26 @@ var realign = function realign(string) {
 		return string;
 	}
 
-	string = string.split(realign.NEWLINE_PATTERN).map(function (line) {
-		return line.replace(realign.SPACE_LINE_PATTERN, "");
-	}).filter(truly).join("\n").replace(realign.TRAILING_SPACE_PATTERN, "").split(realign.NEWLINE_PATTERN);
+	string = string.
+	split(realign.NEWLINE_PATTERN).
+	map(function (line) {return line.replace(realign.SPACE_LINE_PATTERN, "");}).
+	filter(truly).
+	join("\n").
+	replace(realign.TRAILING_SPACE_PATTERN, "").
+	split(realign.NEWLINE_PATTERN);
 
 	var space = (string[0].match(realign.SPACE_PATTERN) || [])[0] || "";
 	var spacePattern = new RegExp("^" + space);
 
-	return string.map(function (line) {
-		return line.replace(spacePattern, "");
-	}).join("\n");
+	return string.map(function (line) {return line.replace(spacePattern, "");}).join("\n");
 };
 
-harden.bind(realign)("NEWLINE_PATTERN", /\n/).harden("SPACE_PATTERN", /\s{2,}/g).harden("SPACE_LINE_PATTERN", /^\s+$/).harden("TRAILING_SPACE_PATTERN", /^[\n\r]+|[\n\r\s]+$/gm);
+harden.
+bind(realign)("NEWLINE_PATTERN", /\n/).
+harden("SPACE_PATTERN", /\s{2,}/g).
+harden("SPACE_LINE_PATTERN", /^\s+$/).
+harden("TRAILING_SPACE_PATTERN", /^[\n\r]+|[\n\r\s]+$/gm);
 
 module.exports = realign;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYWxpZ24uanMiXSwibmFtZXMiOlsiZmFsenkiLCJyZXF1aXJlIiwiaGFyZGVuIiwicHJvdHlwZSIsInRydWx5IiwicmVhbGlnbiIsInN0cmluZyIsIlNUUklORyIsIkVycm9yIiwic3BsaXQiLCJORVdMSU5FX1BBVFRFUk4iLCJtYXAiLCJsaW5lIiwicmVwbGFjZSIsIlNQQUNFX0xJTkVfUEFUVEVSTiIsImZpbHRlciIsImpvaW4iLCJUUkFJTElOR19TUEFDRV9QQVRURVJOIiwic3BhY2UiLCJtYXRjaCIsIlNQQUNFX1BBVFRFUk4iLCJzcGFjZVBhdHRlcm4iLCJSZWdFeHAiLCJiaW5kIiwibW9kdWxlIiwiZXhwb3J0cyJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQTREQSxJQUFNQSxRQUFRQyxRQUFTLE9BQVQsQ0FBZDtBQUNBLElBQU1DLFNBQVNELFFBQVMsUUFBVCxDQUFmO0FBQ0EsSUFBTUUsVUFBVUYsUUFBUyxTQUFULENBQWhCO0FBQ0EsSUFBTUcsUUFBUUgsUUFBUyxPQUFULENBQWQ7O0FBRUEsSUFBTUksVUFBVSxTQUFTQSxPQUFULENBQWtCQyxNQUFsQixFQUEwQjtBQUN6Qzs7Ozs7Ozs7QUFRQSxLQUFJLENBQUNILFFBQVNHLE1BQVQsRUFBaUJDLE1BQWpCLENBQUwsRUFBZ0M7QUFDL0IsUUFBTSxJQUFJQyxLQUFKLENBQVcsZ0JBQVgsQ0FBTjtBQUNBOztBQUVELEtBQUlSLE1BQU9NLE1BQVAsQ0FBSixFQUFxQjtBQUNwQixTQUFPQSxNQUFQO0FBQ0E7O0FBRURBLFVBQVNBLE9BQ1BHLEtBRE8sQ0FDQUosUUFBUUssZUFEUixFQUVQQyxHQUZPLENBRUYsVUFBRUMsSUFBRixFQUFZO0FBQUUsU0FBT0EsS0FBS0MsT0FBTCxDQUFjUixRQUFRUyxrQkFBdEIsRUFBMEMsRUFBMUMsQ0FBUDtBQUF1RCxFQUZuRSxFQUdQQyxNQUhPLENBR0NYLEtBSEQsRUFJUFksSUFKTyxDQUlELElBSkMsRUFLUEgsT0FMTyxDQUtFUixRQUFRWSxzQkFMVixFQUtrQyxFQUxsQyxFQU1QUixLQU5PLENBTUFKLFFBQVFLLGVBTlIsQ0FBVDs7QUFRQSxLQUFJUSxRQUFRLENBQUVaLE9BQVEsQ0FBUixFQUFZYSxLQUFaLENBQW1CZCxRQUFRZSxhQUEzQixLQUE4QyxFQUFoRCxFQUF1RCxDQUF2RCxLQUE4RCxFQUExRTtBQUNBLEtBQUlDLGVBQWUsSUFBSUMsTUFBSixPQUFpQkosS0FBakIsQ0FBbkI7O0FBRUEsUUFBT1osT0FBT0ssR0FBUCxDQUFZLFVBQUVDLElBQUYsRUFBWTtBQUFFLFNBQU9BLEtBQUtDLE9BQUwsQ0FBY1EsWUFBZCxFQUE0QixFQUE1QixDQUFQO0FBQXlDLEVBQW5FLEVBQXNFTCxJQUF0RSxDQUE0RSxJQUE1RSxDQUFQO0FBQ0EsQ0E3QkQ7O0FBK0JBZCxPQUNFcUIsSUFERixDQUNRbEIsT0FEUixFQUNtQixpQkFEbkIsRUFDc0MsSUFEdEMsRUFFRUgsTUFGRixDQUVVLGVBRlYsRUFFMkIsU0FGM0IsRUFHRUEsTUFIRixDQUdVLG9CQUhWLEVBR2dDLE9BSGhDLEVBSUVBLE1BSkYsQ0FJVSx3QkFKVixFQUlvQyx1QkFKcEM7O0FBTUFzQixPQUFPQyxPQUFQLEdBQWlCcEIsT0FBakIiLCJmaWxlIjoicmVhbGlnbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIlwidXNlIHN0cmljdFwiO1xuXG4vKjtcblx0QG1vZHVsZS1saWNlbnNlOlxuXHRcdFRoZSBNSVQgTGljZW5zZSAoTUlUKVxuXHRcdEBtaXQtbGljZW5zZVxuXG5cdFx0Q29weXJpZ2h0IChAYykgMjAxNyBSaWNoZXZlIFNpb2RpbmEgQmViZWRvclxuXHRcdEBlbWFpbDogcmljaGV2ZS5iZWJlZG9yQGdtYWlsLmNvbVxuXG5cdFx0UGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weVxuXHRcdG9mIHRoaXMgc29mdHdhcmUgYW5kIGFzc29jaWF0ZWQgZG9jdW1lbnRhdGlvbiBmaWxlcyAodGhlIFwiU29mdHdhcmVcIiksIHRvIGRlYWxcblx0XHRpbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzXG5cdFx0dG8gdXNlLCBjb3B5LCBtb2RpZnksIG1lcmdlLCBwdWJsaXNoLCBkaXN0cmlidXRlLCBzdWJsaWNlbnNlLCBhbmQvb3Igc2VsbFxuXHRcdGNvcGllcyBvZiB0aGUgU29mdHdhcmUsIGFuZCB0byBwZXJtaXQgcGVyc29ucyB0byB3aG9tIHRoZSBTb2Z0d2FyZSBpc1xuXHRcdGZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6XG5cblx0XHRUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGxcblx0XHRjb3BpZXMgb3Igc3Vic3RhbnRpYWwgcG9ydGlvbnMgb2YgdGhlIFNvZnR3YXJlLlxuXG5cdFx0VEhFIFNPRlRXQVJFIElTIFBST1ZJREVEIFwiQVMgSVNcIiwgV0lUSE9VVCBXQVJSQU5UWSBPRiBBTlkgS0lORCwgRVhQUkVTUyBPUlxuXHRcdElNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLFxuXHRcdEZJVE5FU1MgRk9SIEEgUEFSVElDVUxBUiBQVVJQT1NFIEFORCBOT05JTkZSSU5HRU1FTlQuIElOIE5PIEVWRU5UIFNIQUxMIFRIRVxuXHRcdEFVVEhPUlMgT1IgQ09QWVJJR0hUIEhPTERFUlMgQkUgTElBQkxFIEZPUiBBTlkgQ0xBSU0sIERBTUFHRVMgT1IgT1RIRVJcblx0XHRMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLFxuXHRcdE9VVCBPRiBPUiBJTiBDT05ORUNUSU9OIFdJVEggVEhFIFNPRlRXQVJFIE9SIFRIRSBVU0UgT1IgT1RIRVIgREVBTElOR1MgSU4gVEhFXG5cdFx0U09GVFdBUkUuXG5cdEBlbmQtbW9kdWxlLWxpY2Vuc2VcblxuXHRAbW9kdWxlLWNvbmZpZ3VyYXRpb246XG5cdFx0e1xuXHRcdFx0XCJwYWNrYWdlXCI6IFwicmVhbGlnblwiLFxuXHRcdFx0XCJwYXRoXCI6IFwicmVhbGlnbi9yZWFsaWduLmpzXCIsXG5cdFx0XHRcImZpbGVcIjogXCJyZWFsaWduLmpzXCIsXG5cdFx0XHRcIm1vZHVsZVwiOiBcInJlYWxpZ25cIixcblx0XHRcdFwiYXV0aG9yXCI6IFwiUmljaGV2ZSBTLiBCZWJlZG9yXCIsXG5cdFx0XHRcImNvbnRyaWJ1dG9yc1wiOiBbXG5cdFx0XHRcdFwiSm9obiBMZW5vbiBNYWdoYW5veSA8am9obmxlbm9ubWFnaGFub3lAZ21haWwuY29tPlwiXG5cdFx0XHRdLFxuXHRcdFx0XCJlTWFpbFwiOiBcInJpY2hldmUuYmViZWRvckBnbWFpbC5jb21cIixcblx0XHRcdFwicmVwb3NpdG9yeVwiOiBcImh0dHBzOi8vZ2l0aHViLmNvbS92b2xrb3Zhc3lzdGVtcy9yZWFsaWduLmdpdFwiLFxuXHRcdFx0XCJ0ZXN0XCI6IFwicmVhbGlnbi10ZXN0LmpzXCIsXG5cdFx0XHRcImdsb2JhbFwiOiB0cnVlXG5cdFx0fVxuXHRAZW5kLW1vZHVsZS1jb25maWd1cmF0aW9uXG5cblx0QG1vZHVsZS1kb2N1bWVudGF0aW9uOlxuXHRcdFJlLWFsaWduIHdoaXRlc3BhY2VzIGFuZCB0YWJzIGluIGEgbXVsdGktbGluZSBzdHJpbmcuXG5cblx0XHRUaGlzIHdpbGwgcmVtb3ZlIGxpbmVzIHdpdGhvdXQgc2lnbmlmaWNhbnQgY2hhcmFjdGVycy5cblx0QGVuZC1tb2R1bGUtZG9jdW1lbnRhdGlvblxuXG5cdEBpbmNsdWRlOlxuXHRcdHtcblx0XHRcdFwiZmFsenlcIjogXCJmYWx6eVwiLFxuXHRcdFx0XCJoYXJkZW5cIjogXCJoYXJkZW5cIixcblx0XHRcdFwicHJvdHlwZVwiOiBcInByb3R5cGVcIixcblx0XHRcdFwidHJ1bHlcIjogXCJ0cnVseVwiXG5cdFx0fVxuXHRAZW5kLWluY2x1ZGVcbiovXG5cbmNvbnN0IGZhbHp5ID0gcmVxdWlyZSggXCJmYWx6eVwiICk7XG5jb25zdCBoYXJkZW4gPSByZXF1aXJlKCBcImhhcmRlblwiICk7XG5jb25zdCBwcm90eXBlID0gcmVxdWlyZSggXCJwcm90eXBlXCIgKTtcbmNvbnN0IHRydWx5ID0gcmVxdWlyZSggXCJ0cnVseVwiICk7XG5cbmNvbnN0IHJlYWxpZ24gPSBmdW5jdGlvbiByZWFsaWduKCBzdHJpbmcgKXtcblx0Lyo7XG5cdFx0QG1ldGEtY29uZmlndXJhdGlvbjpcblx0XHRcdHtcblx0XHRcdFx0XCJzdHJpbmc6cmVxdWlyZWRcIjogXCJzdHJpbmdcIlxuXHRcdFx0fVxuXHRcdEBlbmQtbWV0YS1jb25maWd1cmF0aW9uXG5cdCovXG5cblx0aWYoICFwcm90eXBlKCBzdHJpbmcsIFNUUklORyApICl7XG5cdFx0dGhyb3cgbmV3IEVycm9yKCBcImludmFsaWQgc3RyaW5nXCIgKTtcblx0fVxuXG5cdGlmKCBmYWx6eSggc3RyaW5nICkgKXtcblx0XHRyZXR1cm4gc3RyaW5nO1xuXHR9XG5cblx0c3RyaW5nID0gc3RyaW5nXG5cdFx0LnNwbGl0KCByZWFsaWduLk5FV0xJTkVfUEFUVEVSTiApXG5cdFx0Lm1hcCggKCBsaW5lICkgPT4geyByZXR1cm4gbGluZS5yZXBsYWNlKCByZWFsaWduLlNQQUNFX0xJTkVfUEFUVEVSTiwgXCJcIiApIH0gKVxuXHRcdC5maWx0ZXIoIHRydWx5IClcblx0XHQuam9pbiggXCJcXG5cIiApXG5cdFx0LnJlcGxhY2UoIHJlYWxpZ24uVFJBSUxJTkdfU1BBQ0VfUEFUVEVSTiwgXCJcIiApXG5cdFx0LnNwbGl0KCByZWFsaWduLk5FV0xJTkVfUEFUVEVSTiApO1xuXG5cdGxldCBzcGFjZSA9ICggc3RyaW5nWyAwIF0ubWF0Y2goIHJlYWxpZ24uU1BBQ0VfUEFUVEVSTiApIHx8IFsgXSApWyAwIF0gfHwgXCJcIjtcblx0bGV0IHNwYWNlUGF0dGVybiA9IG5ldyBSZWdFeHAoIGBeJHsgc3BhY2UgfWAgKTtcblxuXHRyZXR1cm4gc3RyaW5nLm1hcCggKCBsaW5lICkgPT4geyByZXR1cm4gbGluZS5yZXBsYWNlKCBzcGFjZVBhdHRlcm4sIFwiXCIgKSB9ICkuam9pbiggXCJcXG5cIiApO1xufTtcblxuaGFyZGVuXG5cdC5iaW5kKCByZWFsaWduICkoIFwiTkVXTElORV9QQVRURVJOXCIsIC9cXG4vIClcblx0LmhhcmRlbiggXCJTUEFDRV9QQVRURVJOXCIsIC9cXHN7Mix9L2cgKVxuXHQuaGFyZGVuKCBcIlNQQUNFX0xJTkVfUEFUVEVSTlwiLCAvXlxccyskLyApXG5cdC5oYXJkZW4oIFwiVFJBSUxJTkdfU1BBQ0VfUEFUVEVSTlwiLCAvXltcXG5cXHJdK3xbXFxuXFxyXFxzXSskL2dtICk7XG5cbm1vZHVsZS5leHBvcnRzID0gcmVhbGlnbjtcbiJdfQ==
+
+//# sourceMappingURL=realign.support.js.map
