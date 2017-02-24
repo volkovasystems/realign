@@ -53,17 +53,24 @@
 	@include:
 		{
 			"falzy": "falzy",
-			"harden": "harden",
 			"protype": "protype",
-			"truly": "truly"
+			"truly": "truly",
+			"wichevr": "wichevr"
 		}
 	@end-include
 */
 
 const falzy = require( "falzy" );
-const harden = require( "harden" );
 const protype = require( "protype" );
 const truly = require( "truly" );
+const wichevr = require( "wichevr" );
+
+const EMPTY_SPACE = "";
+const NEWLINE = "\n";
+const NEWLINE_PATTERN = /\n/;
+const SPACE_PATTERN = /\s{2,}/g;
+const SPACE_LINE_PATTERN = /^\s+$/;
+const TRAILING_SPACE_PATTERN = /^[\n\r]+|[\n\r\s]+$/gm;
 
 const realign = function realign( string ){
 	/*;
@@ -83,23 +90,17 @@ const realign = function realign( string ){
 	}
 
 	string = string
-		.split( realign.NEWLINE_PATTERN )
-		.map( ( line ) => { return line.replace( realign.SPACE_LINE_PATTERN, "" ) } )
+		.split( NEWLINE_PATTERN )
+		.map( ( line ) => { return line.replace( SPACE_LINE_PATTERN, EMPTY_SPACE ) } )
 		.filter( truly )
-		.join( "\n" )
-		.replace( realign.TRAILING_SPACE_PATTERN, "" )
-		.split( realign.NEWLINE_PATTERN );
+		.join( NEWLINE )
+		.replace( TRAILING_SPACE_PATTERN, EMPTY_SPACE )
+		.split( NEWLINE_PATTERN );
 
-	let space = ( string[ 0 ].match( realign.SPACE_PATTERN ) || [ ] )[ 0 ] || "";
+	let space = wichevr( string[ 0 ].match( SPACE_PATTERN ), [ ] )[ 0 ] || EMPTY_SPACE;
 	let spacePattern = new RegExp( `^${ space }` );
 
-	return string.map( ( line ) => { return line.replace( spacePattern, "" ) } ).join( "\n" );
+	return string.map( ( line ) => { return line.replace( spacePattern, EMPTY_SPACE ) } ).join( NEWLINE );
 };
-
-harden
-	.bind( realign )( "NEWLINE_PATTERN", /\n/ )
-	.harden( "SPACE_PATTERN", /\s{2,}/g )
-	.harden( "SPACE_LINE_PATTERN", /^\s+$/ )
-	.harden( "TRAILING_SPACE_PATTERN", /^[\n\r]+|[\n\r\s]+$/gm );
 
 module.exports = realign;

@@ -1,9 +1,9 @@
 yarn add \
 babel-runtime \
 falzy \
-harden \
 protype \
 truly \
+wichevr \
 --save && \
 yarn add \
 babel-cli \
@@ -15,7 +15,8 @@ webpack \
 --dev && \
 bower install \
 falzy \
-harden \
 protype \
 truly \
---save
+wichevr \
+--save \
+--force-latest

@@ -14,4 +14,3 @@ let lipsum = realign(
 	);
 
 console.log( lipsum );
-console.log( realign( ) );

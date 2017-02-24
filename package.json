@@ -1,13 +1,13 @@
 {
   "name": "realign",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Re-align whitespaces and tabs in a multi-line string.",
   "main": "realign.js",
   "support": "realign.support.js",
   "deploy": "realign.deploy.js",
   "browser": "realign.deploy.js",
   "scripts": {
-    "build": "babel realign.js --out-file realign.support.js --source-maps && webpack --progress",
+    "build": "babel realign.js --out-file realign.support.js --source-maps && webpack --progress --display-modules",
     "test": "mocha realign-test.js"
   },
   "repository": {
@@ -34,9 +34,9 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "falzy": "^0.13.0",
-    "harden": "^0.16.0",
     "protype": "^0.17.0",
-    "truly": "^0.13.0"
+    "truly": "^0.13.0",
+    "wichevr": "^0.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
