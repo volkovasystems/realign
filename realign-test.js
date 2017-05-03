@@ -1,5 +1,6 @@
 "use strict";
 
+const assert = require( "assert" );
 const realign = require( "./realign.js" );
 
 let lipsum = realign(
@@ -13,4 +14,6 @@ let lipsum = realign(
 		typesetting, remaining essentially unchanged`
 	);
 
-console.log( lipsum );
+assert.ok( lipsum );
+
+console.log( "ok" );
