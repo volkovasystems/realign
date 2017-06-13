@@ -1,8 +1,36 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./realign.deploy.js">
-		</script>
+		<title>realign unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./realign.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "realign unit test", function( assert ) {
+
+				let lipsum = realign(
+					`Lorem Ipsum is simply dummy text of the printing
+					and typesetting industry. Lorem Ipsum has been
+					the industry's standard dummy text ever since
+					the 1500s, when an unknown printer took a
+					galley of type and scrambled it to make a type
+					specimen book. It has survived not only five
+					centuries, but also the leap into electronic
+					typesetting, remaining essentially unchanged`
+				);
+
+				assert.ok( lipsum );
+			} );
+		</script>
+	</body>
 </html>
