@@ -34,10 +34,11 @@
               			"file": "realign.js",
               			"module": "realign",
               			"author": "Richeve S. Bebedor",
-              			"contributors": [
-              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
-              			],
               			"eMail": "richeve.bebedor@gmail.com",
+              			"contributors": [
+              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+              				"Vinse Vinalon <vinsevinalon@gmail.com>"
+              			],
               			"repository": "https://github.com/volkovasystems/realign.git",
               			"test": "realign-test.js",
               			"global": true
@@ -53,7 +54,6 @@
               	@include:
               		{
               			"falzy": "falzy",
-              			"protype": "protype",
               			"truly": "truly",
               			"wichevr": "wichevr"
               		}
@@ -61,7 +61,6 @@
               */
 
 var falzy = require("falzy");
-var protype = require("protype");
 var truly = require("truly");
 var wichevr = require("wichevr");
 
@@ -81,7 +80,7 @@ var realign = function realign(string) {
                                         	@end-meta-configuration
                                         */
 
-	if (!protype(string, STRING)) {
+	if (typeof string != "string") {
 		throw new Error("invalid string");
 	}
 

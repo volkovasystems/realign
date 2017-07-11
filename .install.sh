@@ -1,7 +1,6 @@
 yarn add \
 babel-runtime \
 falzy \
-protype \
 truly \
 wichevr \
 --save && \
@@ -15,7 +14,6 @@ webpack \
 --dev && \
 bower install \
 falzy \
-protype \
 truly \
 wichevr \
 --save \
