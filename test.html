@@ -1,36 +1,28 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>realign unit test</title>
+		<meta charset="utf-8">
 
-		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+		<title>test:realign</title>
 
-		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css"/>
 
-		<script type="application/javascript" src="./realign.deploy.js"></script>
+		<script type="application/javascript" src="./ehm.deploy.js"></script>
 	</head>
 
 	<body>
-		<div id="qunit"></div>
+		<div id="mocha"></div>
 
-		<div id="qunit-fixture"></div>
+		<script type="application/javascript" src="https://unpkg.com/mocha/mocha.js"></script>
 
 		<script type="application/javascript">
-			QUnit.test( "realign unit test", function( assert ) {
+			mocha.setup( "bdd" );
+		</script>
 
-				let lipsum = realign(
-					`Lorem Ipsum is simply dummy text of the printing
-					and typesetting industry. Lorem Ipsum has been
-					the industry's standard dummy text ever since
-					the 1500s, when an unknown printer took a
-					galley of type and scrambled it to make a type
-					specimen book. It has survived not only five
-					centuries, but also the leap into electronic
-					typesetting, remaining essentially unchanged`
-				);
+		<script type="application/javascript" src="./test.deploy.js"></script>
 
-				assert.ok( lipsum );
-			} );
+		<script type="application/javascript">
+			mocha.run( );
 		</script>
 	</body>
 </html>
