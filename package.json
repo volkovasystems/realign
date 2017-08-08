@@ -1,49 +1,52 @@
 {
-  "name": "realign",
-  "version": "0.18.0",
-  "description": "Re-align whitespaces and tabs in a multi-line string.",
-  "main": "realign.js",
-  "support": "realign.support.js",
-  "deploy": "realign.deploy.js",
-  "browser": "realign.deploy.js",
-  "scripts": {
-    "build": "babel realign.js --out-file realign.support.js --source-maps && webpack --progress --display-modules",
-    "test": "mocha realign-test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/volkovasystems/realign.git"
-  },
-  "keywords": [
-    "re-align",
-    "whitespace",
-    "tab",
-    "mult-line",
-    "string",
-    "realign"
-  ],
-  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-  "contributors": [
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon <vinsevinalon@gmail.com>"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/volkovasystems/realign/issues"
-  },
-  "homepage": "https://github.com/volkovasystems/realign#readme",
-  "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "falzy": "^0.20.0",
-    "truly": "^0.19.0",
-    "wichevr": "^0.13.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
-    "source-map-loader": "^0.2.1",
-    "webpack": "^3.1.0"
-  }
+	"name": "realign",
+	"version": "0.19.0",
+	"description": "Re-align whitespaces and tabs in a multi-line string.",
+	"main": "realign.js",
+	"support": "realign.support.js",
+	"deploy": "realign.deploy.js",
+	"browser": "realign.deploy.js",
+	"scripts": {
+		"pristine": "rsetmod clean && flxc execute ./.install.sh",
+		"clear": "rsetmod clean --clear",
+		"build": "babel realign.js --out-file realign.support.js --source-maps && webpack --progress --display-modules",
+		"pretest": "npm run clear && npm run build",
+		"test": "node realign-test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/volkovasystems/realign.git"
+	},
+	"keywords": [
+		"re-align",
+		"whitespace",
+		"tab",
+		"mult-line",
+		"string",
+		"realign"
+	],
+	"author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+	"contributors": [
+		"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+		"Vinse Vinalon <vinsevinalon@gmail.com>"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/volkovasystems/realign/issues"
+	},
+	"homepage": "https://github.com/volkovasystems/realign#readme",
+	"dependencies": {
+		"babel-runtime": "^6.25.0",
+		"falzy": "^0.23.0",
+		"truly": "^0.20.0",
+		"wichevr": "^0.14.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.24.1",
+		"babel-core": "^6.25.0",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-latest": "^6.24.1",
+		"source-map-loader": "^0.2.1",
+		"webpack": "^3.4.1"
+	}
 }
