@@ -10,7 +10,7 @@
 		"pristine": "rsetmod clean && flxc execute ./.install.sh",
 		"clear": "rsetmod clean --clear",
 		"formal": "jesy apply '*.json'",
-		"build:support": "gulp --module realign,meta --all",
+		"build:support": "gulp --module realign --all",
 		"build:deploy": "webpack --config webpack.compact.js --progress --display-modules",
 		"rebuild": "npm run build:support && npm run build:deploy",
 		"build": "npm run pristine && npm run rebuild",
