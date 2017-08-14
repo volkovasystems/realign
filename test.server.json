@@ -1,16 +1,32 @@
 {
   "stats": {
-    "suites": 0,
-    "tests": 0,
-    "passes": 0,
+    "suites": 2,
+    "tests": 1,
+    "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2017-08-10T13:49:56.736Z",
-    "end": "2017-08-10T13:49:56.736Z",
-    "duration": 0
+    "start": "2017-08-14T04:05:38.703Z",
+    "end": "2017-08-14T04:05:38.708Z",
+    "duration": 5
   },
-  "tests": [],
+  "tests": [
+    {
+      "title": "should re-align whitespaces and tabs in a multi-line string",
+      "fullTitle": "realign `realign with multiline string` should re-align whitespaces and tabs in a multi-line string",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ],
   "pending": [],
   "failures": [],
-  "passes": []
+  "passes": [
+    {
+      "title": "should re-align whitespaces and tabs in a multi-line string",
+      "fullTitle": "realign `realign with multiline string` should re-align whitespaces and tabs in a multi-line string",
+      "duration": 1,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ]
 }

@@ -25,5 +25,10 @@
 		"bower_components",
 		"test",
 		"tests"
-	]
+	],
+	"dependencies": {
+		"falzy": "^0.23.0",
+		"truly": "^0.20.0",
+		"wichevr": "^0.14.0"
+	}
 }
