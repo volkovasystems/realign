@@ -1,1 +1,84 @@
-{"state":{"passed":1,"failed":0,"skipped":0},"start":"2017-08-14T04:05:43.872Z","end":"2017-08-14T04:05:54.174Z","capabilities":{"browserName":"chrome","chromeOptions":{"args":["disable-gpu","headless"]},"proxy":null},"host":"127.0.0.1","port":4444,"baseUrl":"http://localhost","framework":"mocha","mochaOpts":{"timeout":10000,"ui":"bdd"},"suites":[{"name":"realign","duration":0,"start":"2017-08-14T04:05:53.896Z","tests":[],"hooks":[]},{"name":"realign","duration":97,"start":"2017-08-14T04:05:53.896Z","end":"2017-08-14T04:05:53.993Z","tests":[],"hooks":[{"start":"2017-08-14T04:05:53.898Z","end":"2017-08-14T04:05:53.898Z","duration":0,"title":"\"before each\" hook","associatedSuite":"realign","associatedTest":"should re-align whitespaces and tabs in a multi-line string"},{"start":"2017-08-14T04:05:53.992Z","end":"2017-08-14T04:05:53.993Z","duration":1,"title":"\"after each\" hook","associatedSuite":"realign","associatedTest":"should re-align whitespaces and tabs in a multi-line string"},{"start":"2017-08-14T04:05:53.993Z","end":"2017-08-14T04:05:53.994Z","duration":1,"title":"\"after all\" hook","associatedSuite":"realign"}]},{"name":"`realign with multiline string`","duration":96,"start":"2017-08-14T04:05:53.897Z","end":"2017-08-14T04:05:53.993Z","tests":[{"name":"should re-align whitespaces and tabs in a multi-line string","start":"2017-08-14T04:05:53.898Z","end":"2017-08-14T04:05:53.992Z","duration":94,"state":"pass"}],"hooks":[]}]}
+{
+	"state": {
+		"passed": 1,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-08-25T02:35:28.164Z",
+	"end": "2017-08-25T02:36:07.315Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "realign",
+			"duration": 0,
+			"start": "2017-08-25T02:36:07.007Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "realign",
+			"duration": 124,
+			"start": "2017-08-25T02:36:07.007Z",
+			"end": "2017-08-25T02:36:07.131Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-08-25T02:36:07.009Z",
+					"end": "2017-08-25T02:36:07.009Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "realign",
+					"associatedTest": "should re-align whitespaces and tabs in a multi-line string"
+				},
+				{
+					"start": "2017-08-25T02:36:07.129Z",
+					"end": "2017-08-25T02:36:07.130Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "realign",
+					"associatedTest": "should re-align whitespaces and tabs in a multi-line string"
+				},
+				{
+					"start": "2017-08-25T02:36:07.131Z",
+					"end": "2017-08-25T02:36:07.131Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "realign"
+				}
+			]
+		},
+		{
+			"name": "`realign with multiline string`",
+			"duration": 123,
+			"start": "2017-08-25T02:36:07.008Z",
+			"end": "2017-08-25T02:36:07.131Z",
+			"tests": [
+				{
+					"name": "should re-align whitespaces and tabs in a multi-line string",
+					"start": "2017-08-25T02:36:07.008Z",
+					"end": "2017-08-25T02:36:07.129Z",
+					"duration": 121,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}

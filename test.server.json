@@ -1,32 +1,32 @@
 {
-  "stats": {
-    "suites": 2,
-    "tests": 1,
-    "passes": 1,
-    "pending": 0,
-    "failures": 0,
-    "start": "2017-08-14T04:05:38.703Z",
-    "end": "2017-08-14T04:05:38.708Z",
-    "duration": 5
-  },
-  "tests": [
-    {
-      "title": "should re-align whitespaces and tabs in a multi-line string",
-      "fullTitle": "realign `realign with multiline string` should re-align whitespaces and tabs in a multi-line string",
-      "duration": 1,
-      "currentRetry": 0,
-      "err": {}
-    }
-  ],
-  "pending": [],
-  "failures": [],
-  "passes": [
-    {
-      "title": "should re-align whitespaces and tabs in a multi-line string",
-      "fullTitle": "realign `realign with multiline string` should re-align whitespaces and tabs in a multi-line string",
-      "duration": 1,
-      "currentRetry": 0,
-      "err": {}
-    }
-  ]
+	"stats": {
+		"suites": 2,
+		"tests": 1,
+		"passes": 1,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-08-25T02:35:26.891Z",
+		"end": "2017-08-25T02:35:26.896Z",
+		"duration": 5
+	},
+	"tests": [
+		{
+			"title": "should re-align whitespaces and tabs in a multi-line string",
+			"fullTitle": "realign `realign with multiline string` should re-align whitespaces and tabs in a multi-line string",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should re-align whitespaces and tabs in a multi-line string",
+			"fullTitle": "realign `realign with multiline string` should re-align whitespaces and tabs in a multi-line string",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
 }
